@@ -1,0 +1,35 @@
+version: "3"
+services:
+  master1:
+    container_name: redis_master1
+    restart: always
+    image: redis:5
+    ports:
+      - "9001:6379"
+    volumes:
+      - ./conf/master.conf:/etc/redis/master.conf
+    command:
+      - redis-server
+      - /etc/redis/master.conf
+  slave1:
+    container_name: redis_slave1
+    restart: always
+    image: redis:5
+    ports:
+      - "9011:6379"
+    volumes:
+      - ./conf/slave1.conf:/etc/redis/slave1.conf
+    command:
+      - redis-server
+      - /etc/redis/slave1.conf
+  slave2:
+    container_name: redis_slave2
+    restart: always
+    image: redis:5
+    ports:
+      - "9012:6379"
+    volumes:
+      - ./conf/slave2.conf:/etc/redis/slave2.conf
+    command:
+      - redis-server
+      - /etc/redis/slave2.conf
