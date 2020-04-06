@@ -1,0 +1,2 @@
+- 自行修改 nginx.conf upstream 的轮询策略测试
+- server_name 根据机器 IP 修改

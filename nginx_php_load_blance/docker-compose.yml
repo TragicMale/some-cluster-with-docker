@@ -1,0 +1,17 @@
+version: "3"
+services:
+  nginx_balancer:
+    image: nginx:stable
+    ports:
+      - "8000:80"
+    volumes:
+      - ./conf/nginx.conf:/etc/nginx/nginx.conf
+      - ./conf/balancer.conf:/etc/nginx/conf.d/balancer.conf
+  php-fpm_1:
+    image: php:fpm
+    volumes:
+      - ./html/node1.php:/var/www/html/index.php
+  php-fpm_2:
+    image: php:fpm
+    volumes:
+      - ./html/node2.php:/var/www/html/index.php
